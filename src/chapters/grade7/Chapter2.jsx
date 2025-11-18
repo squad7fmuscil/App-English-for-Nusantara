@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "../components/ui/Button";
-import { Card } from "../components/ui/Card";
-import { ch2Data } from "../data/ch2";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { ch2Data } from "@/data/chapters/grade7/ch2";
 
 // Import shared activity components
 import {
@@ -11,7 +11,27 @@ import {
   QuizView,
   MatchingView,
   DragDropView,
-} from "../components/activities/SharedActivities";
+} from "@/components/activities";
+
+// ============================================
+// UNIT CARD COMPONENT (Style kayak Chapter 3)
+// ============================================
+function UnitCard({ unit, onSelect }) {
+  return (
+    <div
+      onClick={() => onSelect(unit)}
+      className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-2">
+      <div className="text-7xl mb-4 text-center">{unit.emoji}</div>
+      <h3 className="text-2xl font-bold text-orange-600 mb-3 text-center">
+        Unit {unit.id}
+      </h3>
+      <h4 className="text-xl font-semibold text-gray-800 mb-2 text-center">
+        {unit.title}
+      </h4>
+      <p className="text-gray-600 text-center text-sm">{unit.description}</p>
+    </div>
+  );
+}
 
 // ============================================
 // MAIN CHAPTER 2 COMPONENT
@@ -20,34 +40,24 @@ export default function Chapter2() {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [selectedSection, setSelectedSection] = useState(null);
 
-  // Unit Selection View
+  // Unit Selection View (Style kayak Chapter 3)
   if (!selectedUnit) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 p-8">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Chapter 2: {ch2Data.title}
+          {/* Header with Icon */}
+          <div className="text-center mb-12">
+            <div className="text-8xl mb-4">🍳</div>
+            <h1 className="text-5xl font-bold text-orange-600 mb-4">
+              {ch2Data.title}
             </h1>
-            <p className="text-gray-600">{ch2Data.description}</p>
+            <p className="text-xl text-gray-600">{ch2Data.description}</p>
           </div>
 
-          <div className="grid gap-4">
+          {/* Unit Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {ch2Data.units.map((unit) => (
-              <Card key={unit.id} hover onClick={() => setSelectedUnit(unit)}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      Unit {unit.id}: {unit.title}
-                    </h3>
-                    <p className="text-gray-600">{unit.description}</p>
-                    <div className="mt-3 text-sm text-gray-500">
-                      {unit.sections.length} Activities
-                    </div>
-                  </div>
-                  <Button>Start →</Button>
-                </div>
-              </Card>
+              <UnitCard key={unit.id} unit={unit} onSelect={setSelectedUnit} />
             ))}
           </div>
         </div>

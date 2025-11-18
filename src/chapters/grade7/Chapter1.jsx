@@ -1,12 +1,33 @@
 import { useState } from "react";
 import { ArrowLeft, CheckCircle, XCircle } from "lucide-react";
-import { Button } from "../components/ui/Button";
-import { Card } from "../components/ui/Card";
-import chapter1Data from "../data/ch1";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import chapter1Data from "@/data/chapters/grade7/ch1";
+
+// ============================================
+// UNIT CARD COMPONENT (Style kayak Chapter 3)
+// ============================================
+function UnitCard({ unit, onSelect }) {
+  return (
+    <div
+      onClick={() => onSelect(unit)}
+      className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-2">
+      <div className="text-7xl mb-4 text-center">{unit.emoji}</div>
+      <h3 className="text-2xl font-bold text-blue-600 mb-3 text-center">
+        Unit {unit.id}
+      </h3>
+      <h4 className="text-xl font-semibold text-gray-800 mb-2 text-center">
+        {unit.title}
+      </h4>
+      <p className="text-gray-600 text-center text-sm">
+        {unit.description || `Learn about ${unit.title.toLowerCase()}`}
+      </p>
+    </div>
+  );
+}
 
 // ============================================
 // CHAPTER 1 SPECIFIC ACTIVITIES
-// (Activities yang spesifik untuk Chapter 1, gak ada di chapter lain)
 // ============================================
 
 // VOCAB MATCH - Similar to Matching but with images
@@ -305,9 +326,6 @@ function ConversationActivity({ activity }) {
   );
 }
 
-// FREQUENCY & PRONOUN/VERB PRACTICE - Copy dari Chapter1 yang lama
-// (Gue skip biar gak kepanjangan, tapi sama aja kayak yang udah ada)
-
 // ============================================
 // MAIN CHAPTER 1 COMPONENT
 // ============================================
@@ -315,32 +333,26 @@ export default function Chapter1() {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [selectedActivity, setSelectedActivity] = useState(null);
 
+  // Unit Selection View (Style kayak Chapter 3)
   if (!selectedUnit) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Chapter 1: {chapter1Data.title}
+          {/* Header with Icon */}
+          <div className="text-center mb-12">
+            <div className="text-8xl mb-4">👤</div>
+            <h1 className="text-5xl font-bold text-blue-600 mb-4">
+              {chapter1Data.title}
             </h1>
-            <p className="text-gray-600">Choose a unit to start learning</p>
+            <p className="text-xl text-gray-600">
+              Learn to introduce yourself and talk about your identity
+            </p>
           </div>
 
-          <div className="grid gap-4">
+          {/* Unit Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chapter1Data.units.map((unit) => (
-              <Card key={unit.id} hover onClick={() => setSelectedUnit(unit)}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      Unit {unit.id}: {unit.title}
-                    </h3>
-                    <div className="text-sm text-gray-500">
-                      {unit.activities.length} Activities
-                    </div>
-                  </div>
-                  <Button>Start →</Button>
-                </div>
-              </Card>
+              <UnitCard key={unit.id} unit={unit} onSelect={setSelectedUnit} />
             ))}
           </div>
         </div>
@@ -348,6 +360,7 @@ export default function Chapter1() {
     );
   }
 
+  // Activity Selection View
   if (!selectedActivity) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
@@ -375,7 +388,7 @@ export default function Chapter1() {
                 <div className="flex items-center gap-4">
                   <div className="text-4xl">
                     {activity.type === "vocab-match" && "📚"}
-                    {activity.type === "fill-blank" && "✍️"}
+                    {activity.type === "fill-blank" && "✏️"}
                     {activity.type === "conversation" && "💬"}
                   </div>
                   <div>
@@ -393,6 +406,7 @@ export default function Chapter1() {
     );
   }
 
+  // Activity View
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
       <div className="max-w-6xl mx-auto">

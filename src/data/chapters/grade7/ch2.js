@@ -10,6 +10,7 @@ export const ch2Data = {
     {
       id: 1,
       title: "Breakfast Time",
+      emoji: "🍳",
       description: "Learn about breakfast foods and morning routines",
 
       sections: [
@@ -86,6 +87,7 @@ export const ch2Data = {
     {
       id: 2,
       title: "Lunch and Dinner",
+      emoji: "🍱",
       description: "Explore main meals and Indonesian dishes",
 
       sections: [
@@ -122,35 +124,35 @@ export const ch2Data = {
                 left: "Fried Rice",
                 right: "Nasi Goreng",
                 leftEmoji: "🍛",
-                rightEmoji: "📝",
+                rightEmoji: "🔸",
               },
               {
                 id: 2,
                 left: "Chicken Satay",
                 right: "Sate Ayam",
                 leftEmoji: "🍗",
-                rightEmoji: "📝",
+                rightEmoji: "🔸",
               },
               {
                 id: 3,
                 left: "Fried Noodles",
                 right: "Mie Goreng",
                 leftEmoji: "🍜",
-                rightEmoji: "📝",
+                rightEmoji: "🔸",
               },
               {
                 id: 4,
                 left: "Vegetable Soup",
                 right: "Sayur Sop",
                 leftEmoji: "🥗",
-                rightEmoji: "📝",
+                rightEmoji: "🔸",
               },
               {
                 id: 5,
                 left: "Fried Tempeh",
                 right: "Tempe Goreng",
                 leftEmoji: "🟫",
-                rightEmoji: "📝",
+                rightEmoji: "🔸",
               },
             ],
           },
@@ -198,6 +200,7 @@ export const ch2Data = {
     {
       id: 3,
       title: "Healthy Eating",
+      emoji: "🥗",
       description: "Learn about nutrition and healthy food choices",
 
       sections: [

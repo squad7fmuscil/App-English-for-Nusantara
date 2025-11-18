@@ -6,6 +6,8 @@ export const chapter1Data = {
     {
       id: 1,
       title: "Galang from Kalimantan",
+      emoji: "👤",
+      description: "Learn to introduce yourself and share personal information",
       activities: [
         {
           type: "vocab-match",
@@ -55,6 +57,8 @@ export const chapter1Data = {
     {
       id: 2,
       title: "I Love Fishing",
+      emoji: "🎣",
+      description: "Talk about hobbies and activities you enjoy",
       activities: [
         {
           type: "vocab-match",
@@ -125,6 +129,8 @@ export const chapter1Data = {
     {
       id: 3,
       title: "My Friends and I",
+      emoji: "👥",
+      description: "Describe your friends and their characteristics",
       activities: [
         {
           type: "vocab-match",

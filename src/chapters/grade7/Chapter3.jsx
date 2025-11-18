@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import { Card } from "../components/ui/Card";
-import { Button } from "../components/ui/Button";
-import {
-  VocabularyMatching,
-  FillInTheBlank,
-  DialoguePractice,
-  TrueFalseActivity,
-  QuestionFormation,
-} from "../components/activities/SharedActivities";
-import { ch4Data } from "../data/ch4";
+import { Card } from "../../components/ui/Card";
+import { Button } from "../../components/ui/Button";
+import { VocabularyMatching } from "../../components/activities/VocabularyMatching";
+import { FillInTheBlank } from "../../components/activities/FillInTheBlank";
+import { DialoguePractice } from "../../components/activities/DialoguePractice";
+import { TrueFalseActivity } from "../../components/activities/TrueFalseActivity";
+import { QuestionFormation } from "../../components/activities/QuestionFormation";
+import { ch3Data } from "../../data/chapters/grade7/ch3";
 
-export default function Chapter4() {
+export default function Chapter3() {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [selectedActivity, setSelectedActivity] = useState(null);
 
-  const themeColor = "green";
+  const themeColor = "blue";
 
   const renderUnitContent = (unitId) => {
     const activities = getActivitiesForUnit(unitId);
@@ -25,8 +23,8 @@ export default function Chapter4() {
           ← Back to Units
         </Button>
 
-        <h2 className="text-2xl font-bold text-green-600">
-          {ch4Data.units.find((u) => u.id === unitId)?.title}
+        <h2 className="text-2xl font-bold text-blue-600">
+          {ch3Data.units.find((u) => u.id === unitId)?.title}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -47,44 +45,31 @@ export default function Chapter4() {
 
   const getActivitiesForUnit = (unitId) => {
     switch (unitId) {
-      case 1: // My Class Schedule
+      case 1: // My House
         return [
           {
-            id: "vocab-subjects",
-            title: "Match the Subjects",
-            description: "Learn school subjects vocabulary",
-            icon: "📚",
+            id: "vocab-rooms",
+            title: "Match the Rooms",
+            description: "Learn vocabulary about rooms in a house",
+            icon: "🏠",
             component: () => (
               <VocabularyMatching
-                data={ch4Data.subjectsVocabulary}
+                data={ch3Data.vocabularyMatching}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
               />
             ),
           },
           {
-            id: "vocab-days",
-            title: "Days of the Week",
-            description: "Learn days vocabulary",
-            icon: "📅",
-            component: () => (
-              <VocabularyMatching
-                data={ch4Data.scheduleVocabulary}
-                themeColor={themeColor}
-                onComplete={() => setSelectedActivity(null)}
-              />
-            ),
-          },
-          {
-            id: "fill-schedule",
+            id: "fill-house",
             title: "Complete Sentences",
-            description: "Fill in blanks about schedule",
+            description: "Fill in the blanks about the house",
             icon: "✏️",
             component: () => (
               <FillInTheBlank
                 data={{
-                  ...ch4Data.fillInTheBlank,
-                  questions: ch4Data.fillInTheBlank.questions.slice(0, 3),
+                  ...ch3Data.fillInTheBlank,
+                  questions: ch3Data.fillInTheBlank.questions.slice(0, 3),
                 }}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
@@ -92,16 +77,16 @@ export default function Chapter4() {
             ),
           },
           {
-            id: "dialogue-schedule",
-            title: "Schedule Dialogue",
-            description: "Practice talking about schedule",
+            id: "dialogue-house",
+            title: "House Tour Dialogue",
+            description: "Practice conversation about the house",
             icon: "💬",
             component: () => (
               <DialoguePractice
                 data={{
-                  title: ch4Data.dialogues[0].title,
-                  instruction: "Practice this dialogue",
-                  dialogues: [ch4Data.dialogues[0]],
+                  title: ch3Data.dialogues[0].title,
+                  instruction: "Practice this dialogue with a friend",
+                  dialogues: [ch3Data.dialogues[0]],
                 }}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
@@ -109,16 +94,16 @@ export default function Chapter4() {
             ),
           },
           {
-            id: "question-schedule",
-            title: "Ask About Schedule",
-            description: "Form questions about class schedule",
+            id: "question-house",
+            title: "Ask About Houses",
+            description: "Form questions about houses",
             icon: "❓",
             component: () => (
               <QuestionFormation
                 data={{
-                  ...ch4Data.questionPractice,
-                  exercises: ch4Data.questionPractice.exercises.filter(
-                    (e) => e.type === "schedule"
+                  ...ch3Data.questionPractice,
+                  exercises: ch3Data.questionPractice.exercises.filter(
+                    (e) => e.type === "house"
                   ),
                 }}
                 themeColor={themeColor}
@@ -128,31 +113,31 @@ export default function Chapter4() {
           },
         ];
 
-      case 2: // My Online Class
+      case 2: // My House Chores
         return [
           {
-            id: "vocab-online",
-            title: "Online Class Vocabulary",
-            description: "Learn online learning terms",
-            icon: "💻",
+            id: "vocab-chores",
+            title: "Match the Chores",
+            description: "Learn vocabulary about house chores",
+            icon: "🧹",
             component: () => (
               <VocabularyMatching
-                data={ch4Data.onlineClassVocabulary}
+                data={ch3Data.choresVocabulary}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
               />
             ),
           },
           {
-            id: "fill-online",
+            id: "fill-chores",
             title: "Complete Sentences",
-            description: "Fill in blanks about online class",
+            description: "Fill in the blanks about chores",
             icon: "✏️",
             component: () => (
               <FillInTheBlank
                 data={{
-                  ...ch4Data.fillInTheBlank,
-                  questions: ch4Data.fillInTheBlank.questions.slice(3, 5),
+                  ...ch3Data.fillInTheBlank,
+                  questions: ch3Data.fillInTheBlank.questions.slice(3, 8),
                 }}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
@@ -160,16 +145,16 @@ export default function Chapter4() {
             ),
           },
           {
-            id: "dialogue-online",
-            title: "Online Class Dialogue",
-            description: "Practice online class instructions",
+            id: "dialogue-chores",
+            title: "Chores Dialogue",
+            description: "Talk about household chores",
             icon: "💬",
             component: () => (
               <DialoguePractice
                 data={{
-                  title: ch4Data.dialogues[1].title,
-                  instruction: "Practice online class dialogue",
-                  dialogues: [ch4Data.dialogues[1]],
+                  title: ch3Data.dialogues[1].title,
+                  instruction: "Practice talking about chores",
+                  dialogues: [ch3Data.dialogues[1]],
                 }}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
@@ -177,16 +162,16 @@ export default function Chapter4() {
             ),
           },
           {
-            id: "question-online",
-            title: "Ask About Online Class",
-            description: "Form questions about online learning",
+            id: "question-chores",
+            title: "Ask About Chores",
+            description: "Form questions about chores",
             icon: "❓",
             component: () => (
               <QuestionFormation
                 data={{
-                  ...ch4Data.questionPractice,
-                  exercises: ch4Data.questionPractice.exercises.filter(
-                    (e) => e.type === "online"
+                  ...ch3Data.questionPractice,
+                  exercises: ch3Data.questionPractice.exercises.filter(
+                    (e) => e.type === "chores"
                   ),
                 }}
                 themeColor={themeColor}
@@ -196,35 +181,19 @@ export default function Chapter4() {
           },
         ];
 
-      case 3: // My Study Habits
+      case 3: // Let's Clean Up!
         return [
           {
-            id: "dialogue-study",
-            title: "Study Habits Dialogue",
-            description: "Talk about study habits",
-            icon: "📖",
+            id: "dialogue-cleanup",
+            title: "Let's Clean Together",
+            description: "Practice teamwork dialogue",
+            icon: "👥",
             component: () => (
               <DialoguePractice
                 data={{
-                  title: ch4Data.dialogues[2].title,
-                  instruction: "Practice talking about study habits",
-                  dialogues: [ch4Data.dialogues[2]],
-                }}
-                themeColor={themeColor}
-                onComplete={() => setSelectedActivity(null)}
-              />
-            ),
-          },
-          {
-            id: "fill-study",
-            title: "Complete Sentences",
-            description: "Fill in blanks about study habits",
-            icon: "✏️",
-            component: () => (
-              <FillInTheBlank
-                data={{
-                  ...ch4Data.fillInTheBlank,
-                  questions: ch4Data.fillInTheBlank.questions.slice(5, 8),
+                  title: ch3Data.dialogues[2].title,
+                  instruction: "Practice cleaning up together",
+                  dialogues: [ch3Data.dialogues[2]],
                 }}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
@@ -234,29 +203,11 @@ export default function Chapter4() {
           {
             id: "truefalse",
             title: "True or False",
-            description: "Read about study routines",
-            icon: "📋",
+            description: "Read and answer questions",
+            icon: "📖",
             component: () => (
               <TrueFalseActivity
-                data={ch4Data.trueOrFalse}
-                themeColor={themeColor}
-                onComplete={() => setSelectedActivity(null)}
-              />
-            ),
-          },
-          {
-            id: "question-study",
-            title: "Ask About Study Habits",
-            description: "Form questions about studying",
-            icon: "❓",
-            component: () => (
-              <QuestionFormation
-                data={{
-                  ...ch4Data.questionPractice,
-                  exercises: ch4Data.questionPractice.exercises.filter(
-                    (e) => e.type === "study"
-                  ),
-                }}
+                data={ch3Data.trueOrFalse}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
               />
@@ -270,13 +221,26 @@ export default function Chapter4() {
             component: () => (
               <VocabularyMatching
                 data={{
-                  title: "Chapter 4 Review",
-                  instruction: "Match all the vocabulary",
+                  title: "Vocabulary Review",
+                  instruction: "Match all the vocabulary you learned",
                   pairs: [
-                    ...ch4Data.subjectsVocabulary.pairs.slice(0, 4),
-                    ...ch4Data.onlineClassVocabulary.pairs.slice(0, 4),
+                    ...ch3Data.vocabularyMatching.pairs.slice(0, 4),
+                    ...ch3Data.choresVocabulary.pairs.slice(0, 4),
                   ],
                 }}
+                themeColor={themeColor}
+                onComplete={() => setSelectedActivity(null)}
+              />
+            ),
+          },
+          {
+            id: "fill-review",
+            title: "Complete Review",
+            description: "Review all sentences",
+            icon: "✅",
+            component: () => (
+              <FillInTheBlank
+                data={ch3Data.fillInTheBlank}
                 themeColor={themeColor}
                 onComplete={() => setSelectedActivity(null)}
               />
@@ -291,7 +255,7 @@ export default function Chapter4() {
 
   if (selectedActivity) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 p-8">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
         <div className="max-w-4xl mx-auto">
           <Button onClick={() => setSelectedActivity(null)} className="mb-4">
             ← Back to Activities
@@ -304,7 +268,7 @@ export default function Chapter4() {
 
   if (selectedUnit) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 p-8">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
         <div className="max-w-6xl mx-auto">
           {renderUnitContent(selectedUnit)}
         </div>
@@ -313,27 +277,27 @@ export default function Chapter4() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <div className="text-6xl mb-4">📚</div>
-          <h1 className="text-4xl font-bold text-green-600 mb-2">
-            {ch4Data.title}
+          <div className="text-6xl mb-4">🏠</div>
+          <h1 className="text-4xl font-bold text-blue-600 mb-2">
+            {ch3Data.title}
           </h1>
-          <p className="text-gray-600 text-lg">{ch4Data.description}</p>
+          <p className="text-gray-600 text-lg">{ch3Data.description}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {ch4Data.units.map((unit) => (
+          {ch3Data.units.map((unit) => (
             <Card
               key={unit.id}
               className="cursor-pointer hover:shadow-xl transition-all transform hover:-translate-y-1"
               onClick={() => setSelectedUnit(unit.id)}>
               <div className="text-center">
                 <div className="text-5xl mb-4">
-                  {unit.id === 1 ? "📅" : unit.id === 2 ? "💻" : "📖"}
+                  {unit.id === 1 ? "🏡" : unit.id === 2 ? "🧹" : "✨"}
                 </div>
-                <h3 className="text-xl font-bold text-green-600 mb-2">
+                <h3 className="text-xl font-bold text-blue-600 mb-2">
                   Unit {unit.id}
                 </h3>
                 <h4 className="font-semibold mb-2">{unit.title}</h4>

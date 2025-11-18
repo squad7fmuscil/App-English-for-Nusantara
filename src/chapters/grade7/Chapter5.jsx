@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Card } from "../components/ui/Card";
-import { Button } from "../components/ui/Button";
-import {
-  VocabularyMatching,
-  FillInTheBlank,
-  DialoguePractice,
-  TrueFalseActivity,
-  QuestionFormation,
-} from "../components/activities/SharedActivities";
-import { ch5Data } from "../data/ch5";
+import { Card } from "../../components/ui/Card";
+import { Button } from "../../components/ui/Button";
+import { VocabularyMatching } from "../../components/activities/VocabularyMatching";
+import { FillInTheBlank } from "../../components/activities/FillInTheBlank";
+import { DialoguePractice } from "../../components/activities/DialoguePractice";
+import { TrueFalseActivity } from "../../components/activities/TrueFalseActivity";
+import { QuestionFormation } from "../../components/activities/QuestionFormation";
+import { ch5Data } from "../../data/chapters/grade7/ch5";
 
 export default function Chapter5() {
   const [selectedUnit, setSelectedUnit] = useState(null);

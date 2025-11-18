@@ -1,37 +1,132 @@
-SharedActivities
+
 
 src/
 ├── components/
-│   ├── ui/                  # Reusable UI
+│   ├── ui/
 │   │   ├── Button.jsx
 │   │   ├── Card.jsx
-│   │   └── Modal.jsx
+│   │   ├── Modal.jsx
+│   │   ├── ProgressBar.jsx        # Progress indicator
+│   │   └── TouchFeedback.jsx      # Touch animations
 │   │
-│   └── activities/          # Activity types
-│       ├── SharedActivities.jsx
-│       ├── DragDrop.jsx
-│       ├── Matching.jsx
-│       ├── Quiz.jsx
-│       └── Flashcard.jsx
+│   ├── activities/
+│   │   ├── SharedActivities.jsx
+│   │   ├── DragDrop.jsx
+│   │   ├── Matching.jsx
+│   │   ├── Quiz.jsx
+│   │   ├── Flashcard.jsx
+│   │   ├── ListeningActivity.jsx  # Audio-based activities
+│   │   └── SpeakingActivity.jsx   # Pronunciation practice
+│   │
+│   └── layout/
+│       ├── Header.jsx
+│       ├── Sidebar.jsx
+│       ├── MainLayout.jsx
+│       ├── ChapterNav.jsx
+│       └── PageTransition.jsx
 │
-├── chapters/                # Per chapter (all-in-one)
-│   ├── Chapter0.jsx
-│   ├── Chapter1.jsx
-│   ├── Chapter2.jsx
-│   ├── Chapter3.jsx
-│   ├── Chapter4.jsx
-│   └── Chapter5.jsx
+├── chapters/
+│   ├── grade7/                    # KELAS 7
+│   │   ├── Chapter0.jsx          # The Beginning
+│   │   ├── Chapter1.jsx          # About Me
+│   │   ├── Chapter2.jsx          # Culinary and Me
+│   │   ├── Chapter3.jsx          # Home Sweet Home
+│   │   ├── Chapter4.jsx          # My School Activities
+│   │   └── Chapter5.jsx          # This is My School
+│   │
+│   ├── grade8/                    # KELAS 8
+│   │   ├── Chapter0.jsx          # My Uncle is a Zookeeper
+│   │   ├── Chapter1.jsx          # Kindness Begins with Me
+│   │   ├── Chapter2.jsx          # Love Our World
+│   │   ├── Chapter3.jsx          # Celebrating Independence Day
+│   │   ├── Chapter4.jsx          # Embrace Yourself
+│   │   └── Chapter5.jsx          # I'm Proud of My School
+│   │
+│   └── grade9/                    # KELAS 9
+│       ├── Chapter0.jsx          # Exploring Fauna of Indonesia
+│       ├── Chapter1.jsx          # Taking Trips
+│       ├── Chapter2.jsx          # My School's Moments
+│       ├── Chapter3.jsx          # Upcycling Used Materials
+│       ├── Chapter4.jsx          # Consuming Healthy Foods
+│       └── Chapter5.jsx          # Dreams Come True
 │
-├── data/                    # Content only
-│   ├── ch0.js
-│   ├── ch1.js
-│   ├── ch2.js
-│   ├── ch3.js
-│   ├── ch4.js
-│   └── ch5.js
+├── data/
+│   ├── chapters/
+│   │   ├── grade7/               # Data untuk Kelas 7
+│   │   │   ├── ch0.js
+│   │   │   ├── ch1.js
+│   │   │   ├── ch2.js
+│   │   │   ├── ch3.js
+│   │   │   ├── ch4.js
+│   │   │   └── ch5.js
+│   │   │
+│   │   ├── grade8/               # Data untuk Kelas 8
+│   │   │   ├── ch0.js
+│   │   │   ├── ch1.js
+│   │   │   ├── ch2.js
+│   │   │   ├── ch3.js
+│   │   │   ├── ch4.js
+│   │   │   └── ch5.js
+│   │   │
+│   │   └── grade9/               # Data untuk Kelas 9
+│   │       ├── ch0.js
+│   │       ├── ch1.js
+│   │       ├── ch2.js
+│   │       ├── ch3.js
+│   │       ├── ch4.js
+│   │       └── ch5.js
+│   │
+│   ├── vocabulary/               # Centralized vocabulary
+│   │   ├── grade7.js
+│   │   ├── grade8.js
+│   │   └── grade9.js
+│   │
+│   └── grades.js                 # Grade configurations
+│
+├── pages/
+│   ├── Home.jsx                  # Landing page
+│   ├── GradeSelection.jsx        # Pilih kelas
+│   ├── ChapterList.jsx           # List chapters
+│   ├── Dashboard.jsx             # User progress
+│   └── Settings.jsx              # App settings
+│
+├── contexts/
+│   ├── ProgressContext.jsx       # Track user progress
+│   ├── SettingsContext.jsx       # App settings
+│   └── GradeContext.jsx          # Current grade state
 │
 ├── hooks/
-│   └── useStorage.js        # localStorage wrapper
+│   ├── useStorage.js             # Local storage management
+│   ├── useAudio.js               # Audio playback
+│   ├── useProgress.js            # Progress tracking
+│   └── useGrade.js               # Grade-specific logic
 │
-├── App.jsx
-└── main.jsx
+├── utils/
+│   ├── analytics.js              # Track user activity
+│   ├── audio.js                  # Audio helpers
+│   ├── scoring.js                # Score calculation
+│   └── gradeLoader.js            # Dynamic grade loading
+│
+├── constants/
+│   ├── config.js                 # App configuration
+│   ├── theme.js                  # Theme colors
+│   └── grades.js                 # Grade metadata
+│
+├── assets/
+│   ├── images/
+│   │   ├── grade7/
+│   │   ├── grade8/
+│   │   └── grade9/
+│   │
+│   ├── audio/
+│   │   ├── grade7/
+│   │   ├── grade8/
+│   │   └── grade9/
+│   │
+│   └── videos/
+│       ├── grade7/
+│       ├── grade8/
+│       └── grade9/
+│
+├── App.jsx                       # Main app component
+└── main.jsx                      # Entry point
