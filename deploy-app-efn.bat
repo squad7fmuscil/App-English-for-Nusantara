@@ -1,5 +1,5 @@
 @echo off
-title Deploy App Admin Kelas 7
+title Deploy App English For Nusantara
 color 0A
 
 echo.
@@ -59,7 +59,7 @@ echo         DEPLOYMENT SUCCESS!
 echo  ========================================
 echo.
 echo  GitHub: https://github.com/squad7fmuscil/App-English-for-Nusantara
-echo  Website: https://app-english-for-nusantara.vercel.app//
+echo  Website: https://app-english-for-nusantara.vercel.app/
 echo.
 echo  Vercel will auto-deploy in 1-2 minutes.
 echo.
