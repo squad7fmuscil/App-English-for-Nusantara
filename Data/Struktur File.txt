@@ -1,0 +1,37 @@
+SharedActivities
+
+src/
+├── components/
+│   ├── ui/                  # Reusable UI
+│   │   ├── Button.jsx
+│   │   ├── Card.jsx
+│   │   └── Modal.jsx
+│   │
+│   └── activities/          # Activity types
+│       ├── SharedActivities.jsx
+│       ├── DragDrop.jsx
+│       ├── Matching.jsx
+│       ├── Quiz.jsx
+│       └── Flashcard.jsx
+│
+├── chapters/                # Per chapter (all-in-one)
+│   ├── Chapter0.jsx
+│   ├── Chapter1.jsx
+│   ├── Chapter2.jsx
+│   ├── Chapter3.jsx
+│   ├── Chapter4.jsx
+│   └── Chapter5.jsx
+│
+├── data/                    # Content only
+│   ├── ch0.js
+│   ├── ch1.js
+│   ├── ch2.js
+│   ├── ch3.js
+│   ├── ch4.js
+│   └── ch5.js
+│
+├── hooks/
+│   └── useStorage.js        # localStorage wrapper
+│
+├── App.jsx
+└── main.jsx
